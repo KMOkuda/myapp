@@ -1,8 +1,15 @@
 from fastapi import FastAPI
 from starlette.staticfiles import StaticFiles
+from routers.register import router as register_router
+from config import MEDIA_ROOT
 
 app = FastAPI()
-app.mount("/media", StaticFiles(directory="/srv/app/media", check_dir=False), name="media")
+
+# /media を公開 (画像確認用)
+app.mount("/media", StaticFiles(directory=MEDIA_ROOT, check_dir=False), name="media")
+
+# ルータ登録
+app.include_router(register_router)
 
 @app.get("/health")
 def health():
