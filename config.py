@@ -17,7 +17,7 @@ TOKEN_TTL = timedelta(hours=2)              # 仮登録の有効期限
 DAILY_LIMIT = 3                             # 同一メールの1日上限
 
 # メール
-MAIL_FROM_NAME = "myapp"
+MAIL_FROM_NAME = "囲碁ブック"
 MAIL_FROM_ADDR = "noreply@test.igovote.net"
 SMTP_HOST = "localhost"
 SMTP_PORT = 25

@@ -3,3 +3,4 @@
 .env
 alembic.ini
 settings.py
+logging.ini
