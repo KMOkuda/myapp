@@ -9,10 +9,11 @@ JST = ZoneInfo("Asia/Tokyo")
 # メディア保存先
 MEDIA_ROOT = "/srv/app/media"
 TMP_PROFILES_DIR = Path(os.path.join(MEDIA_ROOT, "tmp/profiles"))
-PROFILES_DIR = os.path.join(MEDIA_ROOT, "profiles")
+PROFILES_DIR = Path(os.path.join(MEDIA_ROOT, "profiles"))
 
 # 制限値
-MAX_FILE_SIZE = 2 * 1024 * 1024            # 2MB
+MIN_PASSWORD_LENGTH = 8                     # パスワードは8文字以上
+MAX_FILE_SIZE = 2 * 1024 * 1024             # 2MB
 TOKEN_TTL = timedelta(hours=2)              # 仮登録の有効期限
 DAILY_LIMIT = 3                             # 同一メールの1日上限
 

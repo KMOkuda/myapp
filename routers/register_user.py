@@ -69,4 +69,18 @@ def show_register_user_mail_sent(request: Request):
 
 @router.get("/completeUserRegistration/{token}", response_class=HTMLResponse)
 async def complete_user_registration(request: Request, token: str, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("registerUserMailSent.html", {"request": request})
+    print("complete_user_registration")
+    svc = RegistrationService(db)
+    try:
+        await svc.complete_registration(token)
+    except ValueError as e:
+        # 失敗時の画面
+        return HTMLResponse(f"<h1>登録エラー</h1><p>{str(e)}</p>", status_code=400)
+
+    # 成功時の画面（例）
+    return HTMLResponse(
+        f"""
+        <h1>登録が完了しました</h1>
+        """,
+        status_code=200,
+    )
