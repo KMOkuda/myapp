@@ -40,14 +40,24 @@ async def register_user(
         logger.error(e)
         return templates.TemplateResponse(
             "registerUser.html",
-            {"request": request, "error": str(e)},
+            {
+                "request": request,
+                "error": str(e),
+                "name": name,
+                "email": email,
+            },
             status_code=400,
         )
     except Exception as e:
         logger.exception("Unhandled exception in /registerUser")
         return templates.TemplateResponse(
             "registerUser.html",
-            {"request": request, "error": "内部エラーが発生しました。"},
+            {
+                "request": request, 
+                "error": "内部エラーが発生しました。",
+                "name": name,
+                "email": email,
+            },
             status_code=500,
         )
 
