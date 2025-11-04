@@ -2,6 +2,11 @@ import os
 from datetime import timedelta
 from zoneinfo import ZoneInfo
 from pathlib import Path
+from dotenv import load_dotenv
+
+# セッションキー
+load_dotenv()
+SESSION_SECRET = os.getenv("SESSION_SECRET")
 
 # タイムゾーン
 JST = ZoneInfo("Asia/Tokyo")
