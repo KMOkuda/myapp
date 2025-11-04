@@ -35,14 +35,26 @@
     input[type="file"] { margin-top:6px; }
 
     .hint { font-size:.9em; color:#6b7280; margin-top:4px; }
-    .actions { display:flex; justify-content:flex-end; gap:12px; margin-top:22px; }
+
     .btn {
-      border:none; border-radius:999px; padding:12px 20px; cursor:pointer; font-weight:600;
-      background:#f3f4f6; transition:0.15s;
+      width:100%;
+      border:none; border-radius:999px; padding:14px 16px; cursor:pointer; font-weight:600;
+      background:#f59e0b; color:white; margin-top:22px;
+      transition:0.15s; text-align:center;
     }
-    .btn:hover { background:#e5e7eb; }
-    .btn.primary { background:#f59e0b; color:white; }
-    .btn.primary:hover { background:#d97706; }
+    .btn:hover { background:#d97706; }
+
+    hr {
+      border:0;
+      border-top:1px solid #e5e7eb;
+      margin:24px 0;
+    }
+
+    .login-link {
+      display:block; text-align:center; font-size:0.9em;
+      color:#f59e0b; font-weight:600; text-decoration:none;
+    }
+    .login-link:hover { color:#d97706; text-decoration:underline; }
   </style>
 </head>
 <body>
@@ -73,11 +85,11 @@
       <input type="file" id="profile_image" name="profile_image" accept="image/*">
       <div class="hint">2MB以下の画像を選択してください。</div>
 
-      <div class="actions">
-        <button type="reset" class="btn">リセット</button>
-        <button type="submit" class="btn primary">登録する</button>
-      </div>
+      <button type="submit" class="btn">登録する</button>
     </form>
+
+    <hr>
+    <a href="/login" class="login-link">ログインはこちら</a>
   </div>
 </body>
 </html>
