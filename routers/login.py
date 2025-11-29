@@ -51,3 +51,16 @@ async def top_page(request: Request):
         "message": message,
     }
     return templates.TemplateResponse("top.html", ctx)
+
+
+@router.post("/logout")
+async def logout(request: Request):
+    # セッション情報を削除
+    request.session.pop("user_id", None)
+    request.session.pop("user_email", None)
+
+    # フラッシュメッセージ
+    set_flash(request, "ログアウトしました。")
+
+    # トップページへリダイレクト
+    return RedirectResponse(url="/top", status_code=303)
