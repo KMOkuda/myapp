@@ -7,6 +7,7 @@ from config import JST
 from deps import get_db
 from services.registration_service import RegistrationService
 from mailer import send_mail
+from utils.flash import set_flash, pop_flash
 import logging
 
 logger = logging.getLogger("myapp")
@@ -77,10 +78,6 @@ async def complete_user_registration(request: Request, token: str, db: Session =
         # 失敗時の画面
         return HTMLResponse(f"<h1>登録エラー</h1><p>{str(e)}</p>", status_code=400)
 
-    # 成功時の画面（例）
-    return HTMLResponse(
-        f"""
-        <h1>登録が完了しました</h1>
-        """,
-        status_code=200,
-    )
+    # 成功したらログインフォームへリダイレクト
+    set_flash(request, "登録が完了しました。ログインしてください。")
+    return RedirectResponse(url="/top", status_code=303)
